@@ -1,13 +1,12 @@
 import pyjokes
 import pyshorteners
-from PyDictionary import PyDictionary
+import emoji
 
+print("1. Get a pyjoke\n2.View an emoji\n3.Shorten a url\n")
 
-print("1. Get a pyjoke\n2.Find the meaning of a word from the dictionary\n3.Shorten a url\n")
+loop=1
 
-loop=True
-
-while(loop):
+while(loop!=0):
     option=input("Please select an option : ")
     option=int(option)
 
@@ -15,15 +14,15 @@ while(loop):
         print(pyjokes.get_joke())
 
     if (option==2):
-        word=input("Enter the word : ")
+        word=input("Enter the word for emoji you want to see : ")
         word=str(word)
-        print(dictionary.meaning(word))
+        print(emoji.emojize('Python is :'+word+':', use_aliases=True))
 
-    if(option==3):
+    if (option==3):
         url = input("Enter the url:")
         s = pyshorteners.Shortener()
         shortenurl = s.tinyurl.short(url)
         print(shortenurl)
     
-    inp=input("Continue? True or False : ")
-    loop=inp
+    inp=input("\nContinue? True(1) or False(0) : ")
+    loop=int(inp)
